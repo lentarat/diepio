@@ -1,6 +1,7 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public class PlayerMouseLook : MonoBehaviour
+public class PlayerMouseLook : NetworkBehaviour
 {
     [Header("Input Actions")]
     [SerializeField] private PlayerInputActionsCatcher _playerInputActionsCatcher;
@@ -9,6 +10,14 @@ public class PlayerMouseLook : MonoBehaviour
     [SerializeField] private float _sensitivity;
 
     private Vector3 _mousePosition;
+
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner)
+        {
+            enabled = false;
+        }
+    }
 
     private void Update()
     {

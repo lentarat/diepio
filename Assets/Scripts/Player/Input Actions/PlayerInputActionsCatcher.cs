@@ -1,17 +1,26 @@
 using UnityEngine;
+using Unity.Netcode;
 using UnityEngine.InputSystem;
 
-public class PlayerInputActionsCatcher : MonoBehaviour
+public class PlayerInputActionsCatcher : NetworkBehaviour
 {
-    //[SerializeField] private PlayerMovement _playerMovement;
+    public event System.Action OnFireButtonStarted;
 
     private PlayerInputActions _playerInputActions;
+
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner)
+        {
+            enabled = false;
+        }
+    }
 
     private void Awake()
     {
         _playerInputActions = new PlayerInputActions();
 
-        //AssignInputActions();
+        AssignInputActions();
     }
     private void OnEnable()
     {
@@ -23,17 +32,24 @@ public class PlayerInputActionsCatcher : MonoBehaviour
         SetInputActionsEnabled(false);
     }
 
+    private void AssignInputActions()
+    {
+        _playerInputActions.Player.Fire.started += DoFire;
+    }
+
     private void SetInputActionsEnabled(bool isEnabled)
     {
         if (isEnabled)
         {
             _playerInputActions.Player.Move.Enable();
             _playerInputActions.Player.Look.Enable();
+            _playerInputActions.Player.Fire.Enable();
         }
         else
         {
             _playerInputActions.Player.Move.Disable();
             _playerInputActions.Player.Look.Disable();
+            _playerInputActions.Player.Fire.Disable();
         }
     }
 
@@ -45,5 +61,10 @@ public class PlayerInputActionsCatcher : MonoBehaviour
     public Vector2 GetMousePosition()
     {
         return _playerInputActions.Player.Look.ReadValue<Vector2>();
+    }
+
+    private void DoFire(InputAction.CallbackContext callbackContext)
+    {
+       OnFireButtonStarted?.Invoke();
     }
 }

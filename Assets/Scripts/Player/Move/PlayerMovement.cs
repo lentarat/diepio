@@ -1,6 +1,7 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     [Header("Input Actions")]
     [SerializeField] private PlayerInputActionsCatcher _playerInputActionsCatcher;
@@ -13,6 +14,14 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 _moveInputVector;
     private Vector2 _movementVelocityVector;
+
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner)
+        {
+            enabled = false;
+        }
+    }
 
     private void Update()
     {
