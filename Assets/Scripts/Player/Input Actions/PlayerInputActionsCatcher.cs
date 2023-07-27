@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputActionsCatcher : NetworkBehaviour
 {
-    public event System.Action OnFireButtonStarted;
+    public event System.Action<bool> OnFireButtonStarted;
 
     private PlayerInputActions _playerInputActions;
 
@@ -35,6 +35,7 @@ public class PlayerInputActionsCatcher : NetworkBehaviour
     private void AssignInputActions()
     {
         _playerInputActions.Player.Fire.started += DoFire;
+        _playerInputActions.Player.Fire.canceled += DoFire;
     }
 
     private void SetInputActionsEnabled(bool isEnabled)
@@ -65,6 +66,13 @@ public class PlayerInputActionsCatcher : NetworkBehaviour
 
     private void DoFire(InputAction.CallbackContext callbackContext)
     {
-       OnFireButtonStarted?.Invoke();
+        if (callbackContext.started)
+        {
+            OnFireButtonStarted?.Invoke(true);
+        }
+        else
+        {
+            OnFireButtonStarted?.Invoke(false);
+        }
     }
 }

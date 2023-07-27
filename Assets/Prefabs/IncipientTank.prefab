@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 910341850853802819}
   - component: {fileID: 1169644730782876254}
+  - component: {fileID: 197824027466946720}
+  - component: {fileID: 1168458800}
+  - component: {fileID: 2867734608824648219}
+  - component: {fileID: 1168458802}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -30,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1769144356880185185}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1169644730782876254
 SpriteRenderer:
@@ -72,9 +76,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 7
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,6 +88,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &197824027466946720
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40690597322592671}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.49999997
+--- !u!114 &1168458800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40690597322592671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ec15d27ff2e5f44a4a542a8c0d15c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2867734608824648219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40690597322592671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d945055f6e8a6741a112dbae9d76202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &1168458802
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40690597322592671}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2162675848841243586
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +164,7 @@ GameObject:
   - component: {fileID: 4878183700868247242}
   - component: {fileID: 1010957057}
   - component: {fileID: -3299964570108016454}
+  - component: {fileID: 8467397434857103604}
   - component: {fileID: 2550305587449534883}
   m_Layer: 0
   m_Name: IncipientTank
@@ -120,6 +186,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3134071878533773353}
+  - {fileID: 415999919105950044}
   - {fileID: 910341850853802819}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -226,8 +293,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInputActionsCatcher: {fileID: 5908848944788308010}
-  _tankData: {fileID: 11400000, guid: d97d44d476bd79a4c808522b061e6e9c, type: 2}
+  _tankDataSO: {fileID: 11400000, guid: d97d44d476bd79a4c808522b061e6e9c, type: 2}
+  _playerStats: {fileID: 8467397434857103604}
   _projectile: {fileID: 40690597322592671}
+  _projectileSpawnTransform: {fileID: 415999919105950044}
+--- !u!114 &8467397434857103604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2162675848841243586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafff8af7fee288478de09a7b4dc713c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthRegeneration: 1
+  MaxHealth: 1
+  BodyDamage: 1
+  BulletSpeed: 1
+  BulletPenetration: 1
+  BulletDamage: 1
+  Reload: 1
+  MovementSpeed: 1
 --- !u!114 &2550305587449534883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +354,7 @@ GameObject:
   - component: {fileID: 4148533406387463307}
   - component: {fileID: 1054603458141145981}
   - component: {fileID: 8709704569303535303}
+  - component: {fileID: 4275420088213348176}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -355,6 +445,49 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4275420088213348176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786168163489421625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d945055f6e8a6741a112dbae9d76202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5870500269452587787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 415999919105950044}
+  m_Layer: 0
+  m_Name: ProjectileSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &415999919105950044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5870500269452587787}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.85, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1769144356880185185}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7177662840168219562
 GameObject:
   m_ObjectHideFlags: 0

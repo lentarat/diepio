@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/Tank Data")]
-public class TankData : ScriptableObject
+public class TankDataSO : ScriptableObject
 {
     [Header("Common")]
     public int BulletDamage;
