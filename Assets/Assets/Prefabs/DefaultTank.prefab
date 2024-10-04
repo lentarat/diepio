@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5407914501460132375}
-  - component: {fileID: 3711738371666522443}
+  - component: {fileID: 989335639485455291}
   - component: {fileID: 3542091461106451665}
   - component: {fileID: 7203437343951808631}
   m_Layer: 0
@@ -120,7 +120,7 @@ Transform:
   - {fileID: 2590238635742651685}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3711738371666522443
+--- !u!114 &989335639485455291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,27 +129,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4441895675554974441}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c799b2a04f52ad42b75a632e0d4dcd9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dc179be26bfb8d49b979663cfe37355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentStats:
-    RegenerationLevel: 0
-    MaxHealthLevel: 0
-    BodyDamage: 0
-    BulletSpeed: 0
-    BulletPenetration: 0
-    BulletDamage: 0
-    Reload: 0
-    MovementSpeed: 0
-  _maxStatsMultipliers:
-    MaxRegenerationMultiplier: 0
-    MaxMaxHealthMultiplier: 0
-    MaxBodyDamageMultiplier: 0
-    MaxBulletSpeedMultiplier: 0
-    MaxBulletPenetrationMultiplier: 0
-    MaxBulletDamageMultiplier: 0
-    MaxReloadMultiplier: 0
-    MaxMovementSpeedMultiplier: 3
+  _maxStatsLevel: 7
 --- !u!114 &3542091461106451665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,9 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423bf120bd286394bb539ae5f7fe916c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tank: {fileID: 3711738371666522443}
-  _drag: 1
-  _speedMultipier: 1
+  _tankUpgrader: {fileID: 989335639485455291}
+  _drag: 3
+  _maxSpeed: 0.02
+  _speedMultipier: 0.05
 --- !u!114 &7203437343951808631
 MonoBehaviour:
   m_ObjectHideFlags: 0

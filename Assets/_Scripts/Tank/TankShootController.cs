@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class TankShootController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private ITankShootable _tankShootable;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
     }
 }
