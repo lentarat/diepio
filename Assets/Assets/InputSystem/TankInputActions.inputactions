@@ -15,9 +15,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Mouse",
-                    "type": "Button",
+                    "name": "MousePosition",
+                    "type": "Value",
                     "id": "237ea702-356b-4fde-963f-6ebdd09d0402",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MouseLeftClick",
+                    "type": "Button",
+                    "id": "10c09931-e2d1-4a31-ab71-8708f78eebe6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -83,11 +92,22 @@
                 {
                     "name": "",
                     "id": "48f43be1-9915-48d4-a356-5070737b39d1",
-                    "path": "",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mouse",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad069917-15b3-4f86-9ff2-29b8d4f2ec4f",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseLeftClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

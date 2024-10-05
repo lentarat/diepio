@@ -37,9 +37,18 @@ public partial class @TankInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Mouse"",
-                    ""type"": ""Button"",
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
                     ""id"": ""237ea702-356b-4fde-963f-6ebdd09d0402"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MouseLeftClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""10c09931-e2d1-4a31-ab71-8708f78eebe6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -105,11 +114,22 @@ public partial class @TankInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""48f43be1-9915-48d4-a356-5070737b39d1"",
-                    ""path"": """",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Mouse"",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad069917-15b3-4f86-9ff2-29b8d4f2ec4f"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseLeftClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -121,7 +141,8 @@ public partial class @TankInputActions: IInputActionCollection2, IDisposable
         // Tank
         m_Tank = asset.FindActionMap("Tank", throwIfNotFound: true);
         m_Tank_Keyboard = m_Tank.FindAction("Keyboard", throwIfNotFound: true);
-        m_Tank_Mouse = m_Tank.FindAction("Mouse", throwIfNotFound: true);
+        m_Tank_MousePosition = m_Tank.FindAction("MousePosition", throwIfNotFound: true);
+        m_Tank_MouseLeftClick = m_Tank.FindAction("MouseLeftClick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -184,13 +205,15 @@ public partial class @TankInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Tank;
     private List<ITankActions> m_TankActionsCallbackInterfaces = new List<ITankActions>();
     private readonly InputAction m_Tank_Keyboard;
-    private readonly InputAction m_Tank_Mouse;
+    private readonly InputAction m_Tank_MousePosition;
+    private readonly InputAction m_Tank_MouseLeftClick;
     public struct TankActions
     {
         private @TankInputActions m_Wrapper;
         public TankActions(@TankInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Keyboard => m_Wrapper.m_Tank_Keyboard;
-        public InputAction @Mouse => m_Wrapper.m_Tank_Mouse;
+        public InputAction @MousePosition => m_Wrapper.m_Tank_MousePosition;
+        public InputAction @MouseLeftClick => m_Wrapper.m_Tank_MouseLeftClick;
         public InputActionMap Get() { return m_Wrapper.m_Tank; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -203,9 +226,12 @@ public partial class @TankInputActions: IInputActionCollection2, IDisposable
             @Keyboard.started += instance.OnKeyboard;
             @Keyboard.performed += instance.OnKeyboard;
             @Keyboard.canceled += instance.OnKeyboard;
-            @Mouse.started += instance.OnMouse;
-            @Mouse.performed += instance.OnMouse;
-            @Mouse.canceled += instance.OnMouse;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
+            @MouseLeftClick.started += instance.OnMouseLeftClick;
+            @MouseLeftClick.performed += instance.OnMouseLeftClick;
+            @MouseLeftClick.canceled += instance.OnMouseLeftClick;
         }
 
         private void UnregisterCallbacks(ITankActions instance)
@@ -213,9 +239,12 @@ public partial class @TankInputActions: IInputActionCollection2, IDisposable
             @Keyboard.started -= instance.OnKeyboard;
             @Keyboard.performed -= instance.OnKeyboard;
             @Keyboard.canceled -= instance.OnKeyboard;
-            @Mouse.started -= instance.OnMouse;
-            @Mouse.performed -= instance.OnMouse;
-            @Mouse.canceled -= instance.OnMouse;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
+            @MouseLeftClick.started -= instance.OnMouseLeftClick;
+            @MouseLeftClick.performed -= instance.OnMouseLeftClick;
+            @MouseLeftClick.canceled -= instance.OnMouseLeftClick;
         }
 
         public void RemoveCallbacks(ITankActions instance)
@@ -236,6 +265,7 @@ public partial class @TankInputActions: IInputActionCollection2, IDisposable
     public interface ITankActions
     {
         void OnKeyboard(InputAction.CallbackContext context);
-        void OnMouse(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
+        void OnMouseLeftClick(InputAction.CallbackContext context);
     }
 }

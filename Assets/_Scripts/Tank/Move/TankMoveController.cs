@@ -14,9 +14,9 @@ public class TankMoveController : MonoBehaviour
     private ITankMoveable _tankMoveable;
     private Vector3 _currentVelocityVector;
 
-    private void Awake()
+    public void Initialize(ITankMoveable tankMoveable)
     {
-        _tankMoveable = new TankInputActionsHolder();
+        _tankMoveable = tankMoveable;
     }
 
     private void FixedUpdate()

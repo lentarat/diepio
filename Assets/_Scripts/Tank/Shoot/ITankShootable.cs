@@ -6,5 +6,5 @@ using System;
 public interface ITankShootable
 {
     public static Action OnShot;
-    void GetAimVector();
+    Vector3 GetAimWorldPosition();
 }
