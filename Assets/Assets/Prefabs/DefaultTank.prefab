@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffcba815280d6b4fbee39325ae3f196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tankMoveController: {fileID: 3542091461106451665}
+  _tankShootController: {fileID: 7203437343951808631}
 --- !u!114 &989335639485455291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,8 +202,8 @@ Transform:
   m_GameObject: {fileID: 5268940860239453036}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.696, z: 0}
-  m_LocalScale: {x: 0.24546483, y: 0.48093748, z: 1}
+  m_LocalPosition: {x: 0.697, y: 0, z: 0}
+  m_LocalScale: {x: 0.45, y: 0.25, z: 0.52}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5407914501460132375}

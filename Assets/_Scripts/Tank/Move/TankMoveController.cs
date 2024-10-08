@@ -11,8 +11,8 @@ public class TankMoveController : MonoBehaviour
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _speedMultipier = 1f;
 
-    private ITankMoveable _tankMoveable;
     private Vector3 _currentVelocityVector;
+    private ITankMoveable _tankMoveable;
 
     public void Initialize(ITankMoveable tankMoveable)
     {

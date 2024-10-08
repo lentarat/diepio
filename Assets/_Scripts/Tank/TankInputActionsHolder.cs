@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TankInputActionsHolder : ITankMoveable, ITankShootable
 {
+    private event Action OnShotFired;
     private TankInputActions _inputActions;
 
     public TankInputActionsHolder()
@@ -12,16 +14,16 @@ public class TankInputActionsHolder : ITankMoveable, ITankShootable
         _inputActions.Tank.MouseLeftClick.performed += HandleShootButtonClicked;
         _inputActions.Enable();
     }
-
-    private void HandleShootButtonClicked(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-    {
-        Debug.Log("click!");
-    }
-
+    
     ~TankInputActionsHolder()
     {
         _inputActions.Tank.MouseLeftClick.performed -= HandleShootButtonClicked;
         _inputActions.Disable();
+    }
+
+    private void HandleShootButtonClicked(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnShotFired?.Invoke();
     }
 
     Vector2 ITankMoveable.GetMovementInputVector()
@@ -30,6 +32,19 @@ public class TankInputActionsHolder : ITankMoveable, ITankShootable
         return movementInputVector;
     }
 
+    event Action ITankShootable.OnShotFired
+    {
+        add
+        {
+            OnShotFired += value;
+        }
+
+        remove
+        {
+            OnShotFired -= value;
+        }
+    }
+    
     Vector3 ITankShootable.GetAimWorldPosition()
     {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(_inputActions.Tank.MousePosition.ReadValue<Vector2>());

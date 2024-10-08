@@ -7,13 +7,17 @@ public class Tank : MonoBehaviour
     [SerializeField] private TankMoveController _tankMoveController;
     [SerializeField] private TankShootController _tankShootController;
 
+    private TankInputActionsHolder _tankInputActionsHolder;
+
     private void Awake()
     {
-        //InjectDependencies();
+        _tankInputActionsHolder = new();
+        InitializeDependencies();
     }
 
-    //private void InjectDependencies()
-    //{ 
-    //    _tankMoveController.Initialize()
-    //}
+    private void InitializeDependencies()
+    {
+        _tankMoveController.Initialize(_tankInputActionsHolder);
+        _tankShootController.Initialize(_tankInputActionsHolder);
+    }
 }
