@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4601954029172913247}
   - component: {fileID: 989335639485455291}
   - component: {fileID: 3542091461106451665}
-  - component: {fileID: 7203437343951808631}
+  - component: {fileID: 3756902533852641026}
   m_Layer: 0
   m_Name: DefaultTank
   m_TagString: Untagged
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tankMoveController: {fileID: 3542091461106451665}
-  _tankShootController: {fileID: 7203437343951808631}
+  _tankShootController: {fileID: 3756902533852641026}
 --- !u!114 &989335639485455291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   _drag: 3
   _maxSpeed: 0.02
   _speedMultipier: 0.05
---- !u!114 &7203437343951808631
+--- !u!114 &3756902533852641026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,9 +173,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4441895675554974441}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68c560746bbef8541aee92f18366ccda, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c09874268a5a8f4396496a2847b9d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _projectile: {fileID: 0}
 --- !u!1 &5268940860239453036
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,28 +2,37 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class TankInputActionsHolder : ITankMoveable, ITankShootable
+public class TankInputActionsHolder : ITankMoveable, ITankAttackable
 {
-    private event Action OnShotFired;
+    private event Action OnShootButtonDown;
+    private event Action OnShootButtonUp;
     private TankInputActions _inputActions;
 
     public TankInputActionsHolder()
     { 
         _inputActions = new TankInputActions();
-        _inputActions.Tank.MouseLeftClick.performed += HandleShootButtonClicked;
+        _inputActions.Tank.MouseLeftClick.performed += HandleShootButtonDown;
+        _inputActions.Tank.MouseLeftClick.canceled += HandleShootButtonUp;
         _inputActions.Enable();
     }
-    
-    ~TankInputActionsHolder()
+
+    private void HandleShootButtonDown(InputAction.CallbackContext obj)
     {
-        _inputActions.Tank.MouseLeftClick.performed -= HandleShootButtonClicked;
-        _inputActions.Disable();
+        OnShootButtonDown?.Invoke();
     }
 
-    private void HandleShootButtonClicked(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void HandleShootButtonUp(InputAction.CallbackContext obj)
     {
-        OnShotFired?.Invoke();
+        OnShootButtonUp?.Invoke();
+    }
+
+    ~TankInputActionsHolder()
+    {
+        _inputActions.Tank.MouseLeftClick.performed -= HandleShootButtonDown;
+        _inputActions.Tank.MouseLeftClick.canceled -= HandleShootButtonUp;
+        _inputActions.Disable();
     }
 
     Vector2 ITankMoveable.GetMovementInputVector()
@@ -32,20 +41,33 @@ public class TankInputActionsHolder : ITankMoveable, ITankShootable
         return movementInputVector;
     }
 
-    event Action ITankShootable.OnShotFired
+    event Action ITankAttackable.OnStartedFiring
     {
         add
         {
-            OnShotFired += value;
+            OnShootButtonDown += value;
         }
 
         remove
         {
-            OnShotFired -= value;
+            OnShootButtonDown -= value;
         }
     }
     
-    Vector3 ITankShootable.GetAimWorldPosition()
+    event Action ITankAttackable.OnFinishedFiring
+    {
+        add
+        {
+            OnShootButtonUp += value;
+        }
+
+        remove
+        {
+            OnShootButtonUp -= value;
+        }
+    }
+
+    Vector3 ITankAttackable.GetAimWorldPosition()
     {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(_inputActions.Tank.MousePosition.ReadValue<Vector2>());
         mouseWorldPosition.z = 0f;

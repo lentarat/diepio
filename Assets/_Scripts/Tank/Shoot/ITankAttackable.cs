@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public interface ITankShootable
+public interface ITankAttackable
 {
-    event Action OnShotFired;
+    event Action OnFinishedFiring;
+    event Action OnStartedFiring;
     Vector3 GetAimWorldPosition();
 }

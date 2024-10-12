@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tank : MonoBehaviour
 {
     [SerializeField] private TankMoveController _tankMoveController;
-    [SerializeField] private TankShootController _tankShootController;
+    [SerializeField] private TankGunsController _tankShootController;
 
     private TankInputActionsHolder _tankInputActionsHolder;
 
