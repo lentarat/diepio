@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IGunShootable
+public class TankDronesController : MonoBehaviour
 {
-    void Shoot();
-    bool IsReloadComplete();
+    
 }

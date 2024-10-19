@@ -5,12 +5,18 @@ using UnityEngine;
 
 public class TankGunsController : MonoBehaviour
 {
-    [SerializeField] private Projectile _projectile;
-
     private bool _isFiring;
     private ITankAttackable _tankAttackable;
+    private IGunShootable[] _guns;
 
     public void Initialize(ITankAttackable tankAttackable)
+    {
+        SetupShooting(tankAttackable);
+        _guns = gameObject.GetComponentsInChildren<IGunShootable>();
+        Debug.Log($"Guns count: {_guns.Length}");
+    }
+
+    private void SetupShooting(ITankAttackable tankAttackable)
     {
         _tankAttackable = tankAttackable;
 
@@ -37,14 +43,25 @@ public class TankGunsController : MonoBehaviour
             _tankAttackable.OnStartedFiring -= StartFiring;
     }
 
-    private void LateUpdate()
-    {
-        Debug.Log(_isFiring);
-        Aim();
-    }
-
     private void Aim()
     {
         transform.right = _tankAttackable.GetAimWorldPosition() - transform.position;
+    }
+
+    private void Update()
+    {
+        Aim();
+        ShootEachGun();
+    }
+
+    private void ShootEachGun()
+    {
+        foreach (IGunShootable gun in _guns)
+        {
+            if (gun.IsReloadComplete())
+            {
+                gun.Shoot();
+            }
+        }
     }
 }
