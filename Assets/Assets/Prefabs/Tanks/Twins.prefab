@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0.449816, b: 1, a: 1}
   m_FlipX: 0
@@ -154,8 +154,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5266468380268483993}
-  - {fileID: 2590238635742651685}
-  - {fileID: 3987300970449434826}
+  - {fileID: 7262789736408521901}
+  - {fileID: 8151238371449783036}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6924979761029884226
@@ -213,6 +213,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxStatsLevel: 7
+--- !u!1 &4879265832242209453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7262789736408521901}
+  - component: {fileID: 3663405466795691967}
+  m_Layer: 0
+  m_Name: Gun1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7262789736408521901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4879265832242209453}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.34100002, y: 0.2035, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2590238635742651685}
+  m_Father: {fileID: 5407914501460132375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3663405466795691967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4879265832242209453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91a37510bf38ce49a4c353d6ff53464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectile: {fileID: 2615324644663902804, guid: 0f46020f439ae1249b1f52ce842720cb, type: 3}
+  _reloadTime: 0.5
+  _projectileEjectionForce: 1
 --- !u!1 &5268940860239453036
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,9 +271,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2590238635742651685}
   - component: {fileID: 8615101737817955972}
-  - component: {fileID: 3271395284835118844}
   m_Layer: 0
-  m_Name: Gun 1
+  m_Name: Gun1Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,11 +287,11 @@ Transform:
   m_GameObject: {fileID: 5268940860239453036}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6039, y: 0.2035, z: 0}
+  m_LocalPosition: {x: 0.26100004, y: 0, z: 0}
   m_LocalScale: {x: 0.47585896, y: 0.25, z: 0.52}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5407914501460132375}
+  m_Father: {fileID: 7262789736408521901}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8615101737817955972
 SpriteRenderer:
@@ -286,7 +333,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 90
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.7676166, b: 0, a: 1}
   m_FlipX: 0
@@ -298,19 +345,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3271395284835118844
+--- !u!1 &7765235108088409638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8151238371449783036}
+  - component: {fileID: 763953043081056310}
+  m_Layer: 0
+  m_Name: Gun2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8151238371449783036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7765235108088409638}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.341, y: -0.2035, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3987300970449434826}
+  m_Father: {fileID: 5407914501460132375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &763953043081056310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5268940860239453036}
+  m_GameObject: {fileID: 7765235108088409638}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b91a37510bf38ce49a4c353d6ff53464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reloadTime: 0
+  _projectile: {fileID: 2615324644663902804, guid: 0f46020f439ae1249b1f52ce842720cb, type: 3}
+  _reloadTime: 0.5
+  _projectileEjectionForce: 1
 --- !u!1 &7971982265940061045
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,9 +403,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3987300970449434826}
   - component: {fileID: 1960667642331162949}
-  - component: {fileID: 5039466045458689277}
   m_Layer: 0
-  m_Name: Gun 2
+  m_Name: Gun2Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,11 +419,11 @@ Transform:
   m_GameObject: {fileID: 7971982265940061045}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6039, y: -0.2035, z: 0}
+  m_LocalPosition: {x: 0.261, y: 0, z: 0}
   m_LocalScale: {x: 0.47585896, y: 0.25, z: 0.52}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5407914501460132375}
+  m_Father: {fileID: 8151238371449783036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1960667642331162949
 SpriteRenderer:
@@ -384,7 +465,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 90
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.7676166, b: 0, a: 1}
   m_FlipX: 0
@@ -396,16 +477,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5039466045458689277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7971982265940061045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b91a37510bf38ce49a4c353d6ff53464, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _reloadTime: 0

@@ -12,8 +12,8 @@ public class ShootableTank : Tank
         _tankGunsController.Initialize(_tankInputActionsHolder);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Tank Collision");
+        Debug.Log("Shootable Tank Trigger");
     }
 }

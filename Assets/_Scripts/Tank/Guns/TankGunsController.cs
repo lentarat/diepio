@@ -12,8 +12,7 @@ public class TankGunsController : MonoBehaviour
     public void Initialize(ITankAttackable tankAttackable)
     {
         SetupShooting(tankAttackable);
-        _guns = gameObject.GetComponentsInChildren<IGunShootable>();
-        Debug.Log($"Guns count: {_guns.Length}");
+        GetGunsInChildren();
     }
 
     private void SetupShooting(ITankAttackable tankAttackable)
@@ -37,6 +36,12 @@ public class TankGunsController : MonoBehaviour
         _isFiring = false;
     }
 
+    private void GetGunsInChildren()
+    {
+        _guns = gameObject.GetComponentsInChildren<IGunShootable>();
+        Debug.Log($"Guns count: {_guns.Length}");
+    }
+
     private void OnDestroy()
     {
         if (_tankAttackable != null)
@@ -51,7 +56,9 @@ public class TankGunsController : MonoBehaviour
     private void Update()
     {
         Aim();
-        ShootEachGun();
+        
+        if(_isFiring)
+            ShootEachGun();
     }
 
     private void ShootEachGun()
